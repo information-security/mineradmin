@@ -46,13 +46,13 @@ func (h Handler) NewUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, "blank name")
 	}
 
-	userID, err := h.store.AddUser("", email, "", name, "")
+	user, err := h.store.AddUser("", email, "", name, "")
 	if err != nil {
 		return errors.New("failed to add user to DB: " + err.Error())
 	}
 
 	return c.Redirect(http.StatusFound, fmt.Sprintf(
-		"/users/%d/addresses", userID))
+		"/users/%d/addresses", user.ID))
 }
 
 type userAddressesData struct {
