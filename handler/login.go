@@ -22,7 +22,7 @@ func (h Handler) Login(c echo.Context) error {
 			path = ""
 		}
 		return c.Render(http.StatusOK, "login", loginPageData{
-			CSRFToken: c.Get("csrf-token").(string),
+			CSRFToken: c.Get(middleware.DefaultCSRFConfig.ContextKey).(string),
 			Path:      path,
 		})
 	}
