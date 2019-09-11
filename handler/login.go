@@ -8,6 +8,7 @@ import (
 	"github.com/boomstarternetwork/bestore"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 type loginPageData struct {
